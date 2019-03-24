@@ -1,9 +1,9 @@
-import { KEYBOARD_KEY_MAP, ESCAPE_KEY } from './keyboard'
 import { DOMAIN, KEY } from './constants'
+import { KEYBOARD_KEY_MAP, ESCAPE_KEY } from './keyboard'
 
 export function createBashCommands (keyboardShortcuts) {
-  const result = [`defaults delete ${DOMAIN} ${KEY}`]
-  keyboardShortcuts.forEach(function ({ domain, menu, shortcut }) {
+  const result = []
+  keyboardShortcuts.forEach(function ({ menu, shortcut }) {
     result.push(
       `defaults write ${DOMAIN} ${KEY} -dict-add "${createMenu(
         menu

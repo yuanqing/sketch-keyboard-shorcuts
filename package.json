@@ -17,7 +17,8 @@
   "scripts": {
     "fix": "prettier-standard 'src/**/*.js'",
     "lint": "standard 'src/**/*.js'",
-    "start": "./src/sks/sks-esm.js"
+    "set": "./src/sks/sks-esm.js set",
+    "unset": "./src/sks/sks-esm.js unset"
   },
   "dependencies": {
     "chalk": "^2.4.2",
