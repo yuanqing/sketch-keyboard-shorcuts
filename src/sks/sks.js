@@ -3,9 +3,9 @@ import yargs from 'yargs'
 
 import { parseConfig } from '../common/parse-config'
 import { createBashCommands } from '../common/create-bash-commands'
-import { executeBashCommands } from '../common/execute-bash-commands'
-import { writeBashCommandsToStdout } from '../common/write-bash-commands-to-stdout'
 import { createLogger } from '../common/create-logger'
+import { executeBashCommands } from '../common/execute-bash-commands'
+import { outputBashCommands } from '../common/output-bash-commands'
 
 async function main () {
   const argv = parseCommandLineArguments()
@@ -17,12 +17,14 @@ async function main () {
     return
   }
   try {
-    const fileContent = filePath ? await readFile(filePath, 'utf8') : await getStdin()
+    const fileContent = filePath
+      ? await readFile(filePath, 'utf8')
+      : await getStdin()
     const config = JSON.parse(fileContent)
     const keyboardShortcuts = parseConfig(config)
     const bashCommands = createBashCommands(keyboardShortcuts)
     if (argv.bash) {
-      writeBashCommandsToStdout(bashCommands)
+      outputBashCommands(bashCommands)
       return
     }
     await executeBashCommands(bashCommands)
