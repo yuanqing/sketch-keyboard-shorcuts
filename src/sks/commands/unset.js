@@ -23,7 +23,7 @@ export const unset = {
         return
       }
       await executeBashCommands(bashCommands)
-      logger.succeed('Unset keyboard shortcuts')
+      logger.succeed('Unset all keyboard shortcuts')
     } catch (error) {
       logger.fail(error)
       process.exit(1)
