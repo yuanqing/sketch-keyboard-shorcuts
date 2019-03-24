@@ -2,5 +2,5 @@
 
 ```sh
 $ yarn global add sketch-keyboard-shorcuts
-$ sks shortcuts.json
+$ sks set shortcuts.json
 ```
