@@ -1,0 +1,49 @@
+{
+  "name": "sketch-keyboard-shorcuts",
+  "version": "0.0.0",
+  "description": "A command-line utility to manage keyboard shortcuts for Sketch",
+  "author": "Lim Yuan Qing",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yuanqing/sketch-keyboard-shorcuts.git"
+  },
+  "files": [
+    "src"
+  ],
+  "bin": {
+    "sks": "src/sks/sks-esm.js"
+  },
+  "scripts": {
+    "fix": "prettier-standard 'src/**/*.js'",
+    "lint": "standard 'src/**/*.js'",
+    "start": "./src/sks/sks-esm.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "esm": "^3.2.20",
+    "execa": "^1.0.0",
+    "fs-extra": "^7.0.1",
+    "get-stdin": "^6.0.0",
+    "ora": "^3.2.0",
+    "time-stamp": "^2.2.0",
+    "yargs": "^13.2.2"
+  },
+  "devDependencies": {
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier-standard": "^9.1.1",
+    "standard": "^12.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "standard",
+      "git add"
+    ]
+  }
+}
