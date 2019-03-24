@@ -1,12 +1,12 @@
 {
-  "name": "sketch-keyboard-shorcuts",
+  "name": "sketch-keyboard-shortcuts",
   "version": "0.0.1",
   "description": "A command-line utility to manage keyboard shortcuts for Sketch",
   "author": "Lim Yuan Qing",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/yuanqing/sketch-keyboard-shorcuts.git"
+    "url": "git://github.com/yuanqing/sketch-keyboard-shortcuts.git"
   },
   "files": [
     "src"
