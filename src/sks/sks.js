@@ -1,4 +1,5 @@
 import { exists, readFile } from 'fs-extra'
+import getStdin from 'get-stdin'
 import yargs from 'yargs'
 
 import { parseConfig } from '../common/parse-config'
@@ -14,7 +15,6 @@ async function main () {
   if (filePath && !(await exists(filePath))) {
     logger.fail('File does not exist')
     process.exit(1)
-    return
   }
   try {
     const fileContent = filePath
