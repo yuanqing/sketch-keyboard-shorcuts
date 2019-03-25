@@ -1,6 +1,6 @@
 {
   "name": "sketch-keyboard-shortcuts",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A command-line utility to manage keyboard shortcuts for Sketch",
   "author": "Lim Yuan Qing",
   "license": "MIT",
