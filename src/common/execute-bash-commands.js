@@ -1,5 +1,8 @@
-import execa from 'execa'
+import { shell } from 'execa'
+import pEachSeries from 'p-each-series'
 
 export async function executeBashCommands (bashCommands) {
-  return bashCommands.map(execa)
+  return pEachSeries(bashCommands, function (bashCommand) {
+    return shell(bashCommand)
+  })
 }

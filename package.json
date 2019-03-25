@@ -27,6 +27,7 @@
     "fs-extra": "^7.0.1",
     "get-stdin": "^6.0.0",
     "ora": "^3.2.0",
+    "p-each-series": "^2.0.0",
     "time-stamp": "^2.2.0",
     "yargs": "^13.2.2"
   },
