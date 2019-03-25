@@ -1,7 +1,7 @@
 export function parseConfig (config) {
   const result = []
   for (const key in config) {
-    parseItem(config[key], [], result)
+    parseItem(config[key], [key], result)
   }
   return result
 }
