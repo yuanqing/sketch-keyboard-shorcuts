@@ -5,12 +5,12 @@ import { unsetAllKeyboardShortcutsBashCommand } from '../../common/unset-all-key
 
 export const unset = {
   command: 'unset',
-  describe: 'Unsets all Sketch keyboard shortcuts',
+  describe: 'Unsets all keyboard shortcuts',
   builder: {
-    bash: {
-      alias: ['b'],
+    script: {
+      alias: ['s'],
       default: false,
-      describe: 'Outputs a bash script',
+      describe: 'Outputs a bash script to stdout',
       type: 'boolean'
     }
   },
@@ -18,16 +18,15 @@ export const unset = {
     const logger = createLogger()
     try {
       const bashCommands = [unsetAllKeyboardShortcutsBashCommand]
-      if (argv.bash) {
+      if (argv.script) {
         outputBashCommands(bashCommands)
-        return
+      } else {
+        await executeBashCommands(bashCommands)
+        logger.succeed('Unset all keyboard shortcuts')
       }
-      await executeBashCommands(bashCommands)
-      logger.succeed('Unset all keyboard shortcuts')
+      return Promise.resolve()
     } catch (error) {
-      logger.fail(error)
-      process.exit(1)
+      return Promise.reject(error)
     }
-    return Promise.resolve()
   }
 }

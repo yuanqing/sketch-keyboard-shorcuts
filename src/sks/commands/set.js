@@ -1,21 +1,21 @@
 import { exists, readFile } from 'fs-extra'
 import getStdin from 'get-stdin'
 
-import { parseConfig } from '../../common/parse-config'
 import { createBashCommands } from '../../common/create-bash-commands'
 import { createLogger } from '../../common/create-logger'
 import { executeBashCommands } from '../../common/execute-bash-commands'
 import { outputBashCommands } from '../../common/output-bash-commands'
+import { parseConfig } from '../../common/parse-config'
 import { unsetAllKeyboardShortcutsBashCommand } from '../../common/unset-all-keyboard-shortcuts-bash-command'
 
 export const set = {
-  command: 'set [file]',
-  describe: 'Sets Sketch keyboard shortcuts',
+  command: ['set [file]', '$0'],
+  describe: 'Sets keyboard shortcuts as defined in the specified file',
   builder: {
-    bash: {
-      alias: ['b'],
+    script: {
+      alias: ['s'],
       default: false,
-      describe: 'Outputs a bash script',
+      describe: 'Outputs a bash script to stdout',
       type: 'boolean'
     }
   },
@@ -23,8 +23,7 @@ export const set = {
     const logger = createLogger()
     const filePath = argv.file
     if (filePath && !(await exists(filePath))) {
-      logger.fail('File does not exist')
-      process.exit(1)
+      return Promise.reject(new Error('File does not exist'))
     }
     try {
       const fileContent = filePath
@@ -36,16 +35,15 @@ export const set = {
         unsetAllKeyboardShortcutsBashCommand,
         ...createBashCommands(keyboardShortcuts)
       ]
-      if (argv.bash) {
+      if (argv.script) {
         outputBashCommands(bashCommands)
-        return
+      } else {
+        await executeBashCommands(bashCommands)
+        logger.succeed('Set keyboard shortcuts')
       }
-      await executeBashCommands(bashCommands)
-      logger.succeed('Set keyboard shortcuts')
+      return Promise.resolve()
     } catch (error) {
-      logger.fail(error)
-      process.exit(1)
+      return Promise.reject(error)
     }
-    return Promise.resolve()
   }
 }
