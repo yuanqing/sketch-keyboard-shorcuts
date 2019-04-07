@@ -2,7 +2,7 @@ import yargs from 'yargs'
 
 import { set } from './commands/set'
 import { unset } from './commands/unset'
-import { createLogger } from '../common/create-logger'
+import { createLogger } from './common/create-logger'
 
 yargs
   .command(set)
@@ -14,6 +14,6 @@ yargs
 
 function fail (message, error) {
   const logger = createLogger()
-  logger.fail(error.message)
+  logger.fail(message || error.message)
   process.exitCode = 1
 }

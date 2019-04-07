@@ -2,4 +2,4 @@
 
 // eslint-disable-next-line no-global-assign
 require = require('esm')(module)
-module.exports = require('./sks.js')
+module.exports = require('./cli.js')

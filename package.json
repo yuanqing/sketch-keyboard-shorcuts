@@ -12,13 +12,13 @@
     "src"
   ],
   "bin": {
-    "sks": "src/sks/sks-esm.js"
+    "sks": "src/cli-esm.js"
   },
   "scripts": {
     "fix": "prettier-standard 'src/**/*.js'",
     "lint": "standard 'src/**/*.js'",
-    "set": "./src/sks/sks-esm.js set",
-    "unset": "./src/sks/sks-esm.js unset"
+    "set": "./src/cli-esm.js set",
+    "unset": "./src/cli-esm.js unset"
   },
   "dependencies": {
     "chalk": "^2.4.2",
