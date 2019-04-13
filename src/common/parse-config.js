@@ -6,13 +6,13 @@ export function parseConfig (config) {
   return result
 }
 
-const SINGLE_SPACE_REGEX = /\s/
+const singleSpaceRegularExpression = /\s/
 
 function parseItem (config, menu, result) {
   if (typeof config === 'string') {
     result.push({
       menu,
-      shortcut: config.split(SINGLE_SPACE_REGEX)
+      shortcut: config.split(singleSpaceRegularExpression)
     })
     return
   }
