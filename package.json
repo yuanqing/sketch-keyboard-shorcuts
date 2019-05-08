@@ -1,6 +1,6 @@
 {
   "name": "sketch-keyboard-shortcuts",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A command-line utility to manage keyboard shortcuts for Sketch",
   "keywords": [
     "cli",
