@@ -6,7 +6,7 @@
 
 Requires [Node.js](https://nodejs.org/).
 
-```sh
+```
 $ npm i -g sketch-keyboard-shortcuts
 $ cat shortcuts.json
 {
@@ -32,7 +32,7 @@ Set 5 keyboard shortcuts
 
 ## Usage
 
-```sh
+```
 $ sks
 sks <command>
 
@@ -47,7 +47,7 @@ Options:
 
 ## Installation
 
-```sh
+```
 $ npm i -g sketch-keyboard-shortcuts
 ```
 
