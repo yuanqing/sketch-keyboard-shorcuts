@@ -23,10 +23,11 @@ $ cat shortcuts.json
   }
 }
 $ sks set shortcuts.json
+Set 5 keyboard shortcuts
 ```
 
 - The path to each menu item is specified via a nested JSON object.
-- Each keypress within the shortcut is to be separated by a space.
+- Each keypress within each shortcut shortcut is separated by a space.
 - Use `cmd`, `ctrl`, `opt`, and `shift` for modifier keys, and `up`, `down`, `left`, and `right` for arrow keys.
 
 ## Usage
