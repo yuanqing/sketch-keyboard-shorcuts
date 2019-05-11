@@ -24,14 +24,11 @@
     "unset": "./src/cli-esm.js unset"
   },
   "dependencies": {
-    "chalk": "^2.4.2",
     "esm": "^3.2.22",
     "execa": "^1.0.0",
     "fs-extra": "^7.0.1",
     "get-stdin": "^7.0.0",
-    "ora": "^3.4.0",
     "p-each-series": "^2.1.0",
-    "time-stamp": "^2.2.0",
     "yargs": "^13.2.2"
   },
   "devDependencies": {

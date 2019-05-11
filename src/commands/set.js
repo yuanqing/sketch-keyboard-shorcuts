@@ -2,13 +2,12 @@ import { exists, readFile } from 'fs-extra'
 import getStdin from 'get-stdin'
 
 import { createBashCommands } from '../common/create-bash-commands'
-import { createLogger } from '../common/create-logger'
 import { executeBashCommands } from '../common/execute-bash-commands'
 import { outputBashCommands } from '../common/output-bash-commands'
 import { parseConfig } from '../common/parse-config'
 
 export const set = {
-  command: ['set <file>', '$0'],
+  command: ['set <file>'],
   describe: 'Sets keyboard shortcuts as defined in the specified file',
   builder: function (yargs) {
     yargs.positional('file', {
@@ -23,10 +22,9 @@ export const set = {
     })
   },
   handler: async function (argv) {
-    const logger = createLogger()
     const filePath = argv.file
     if (!filePath) {
-      return Promise.resolve()
+      return Promise.reject(new Error('Need a file'))
     }
     if (!(await exists(filePath))) {
       return Promise.reject(new Error('File does not exist'))
@@ -42,7 +40,6 @@ export const set = {
         outputBashCommands(bashCommands)
       } else {
         await executeBashCommands(bashCommands)
-        logger.succeed('Set keyboard shortcuts')
       }
       return Promise.resolve()
     } catch (error) {

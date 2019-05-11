@@ -1,7 +1,6 @@
-import { createLogger } from '../common/create-logger'
 import { executeBashCommands } from '../common/execute-bash-commands'
 import { outputBashCommands } from '../common/output-bash-commands'
-import { unsetAllKeyboardShortcutsBashCommand } from '../common/unset-all-keyboard-shortcuts-bash-command'
+import { unsetAllKeyboardShortcutsBashCommands } from '../common/unset-all-keyboard-shortcuts-bash-commands'
 
 export const unset = {
   command: 'unset',
@@ -15,14 +14,11 @@ export const unset = {
     })
   },
   handler: async function (argv) {
-    const logger = createLogger()
     try {
-      const bashCommands = [unsetAllKeyboardShortcutsBashCommand]
       if (argv.script) {
-        outputBashCommands(bashCommands)
+        outputBashCommands(unsetAllKeyboardShortcutsBashCommands)
       } else {
-        await executeBashCommands(bashCommands)
-        logger.succeed('Unset all keyboard shortcuts')
+        await executeBashCommands(unsetAllKeyboardShortcutsBashCommands)
       }
       return Promise.resolve()
     } catch (error) {

@@ -10,6 +10,8 @@ export function createBashCommands (keyboardShortcuts) {
       )}" "${createShortcut(shortcut)}"`
     )
   })
+  const length = keyboardShortcuts.length
+  result.push(`echo "Set ${length} keyboard shortcut${length === 1 ? '' : 's'}"`)
   return result
 }
 
