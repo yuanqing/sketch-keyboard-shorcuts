@@ -6,7 +6,6 @@ import { createLogger } from '../common/create-logger'
 import { executeBashCommands } from '../common/execute-bash-commands'
 import { outputBashCommands } from '../common/output-bash-commands'
 import { parseConfig } from '../common/parse-config'
-import { unsetAllKeyboardShortcutsBashCommand } from '../common/unset-all-keyboard-shortcuts-bash-command'
 
 export const set = {
   command: ['set <file>', '$0'],
@@ -38,10 +37,7 @@ export const set = {
         : await getStdin()
       const config = JSON.parse(fileContent)
       const keyboardShortcuts = parseConfig(config)
-      const bashCommands = [
-        unsetAllKeyboardShortcutsBashCommand,
-        ...createBashCommands(keyboardShortcuts)
-      ]
+      const bashCommands = createBashCommands(keyboardShortcuts)
       if (argv.script) {
         outputBashCommands(bashCommands)
       } else {
