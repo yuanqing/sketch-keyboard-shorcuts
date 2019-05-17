@@ -7,7 +7,7 @@
 Requires [Node.js](https://nodejs.org/).
 
 ```
-$ npm i -g sketch-keyboard-shortcuts
+$ npm install --global sketch-keyboard-shortcuts
 $ cat shortcuts.json
 {
   "Arrange": {
@@ -48,7 +48,7 @@ Options:
 ## Installation
 
 ```
-$ npm i -g sketch-keyboard-shortcuts
+$ npm install --global sketch-keyboard-shortcuts
 ```
 
 ## License
